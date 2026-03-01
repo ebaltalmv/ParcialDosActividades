@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DataBindingExample.Views.MainPage"
+             Title="Airlines"
+             xmlns:models="clr-namespace:DataBindingExample.Models"
+             xmlns:vm="clr-namespace:DataBindingExample.ViewModels"
+             x:DataType="vm:AirlinesViewModel"
+             Shell.BackgroundColor="BlueViolet"
+             Padding="5">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add New Airline"
+                     Command="{Binding GoToAddPageCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <CollectionView ItemsSource="{Binding Airlines}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:AirlineModel">
+                <SwipeView>
+                    <SwipeView.RightItems>
+                        <SwipeItems>
+                            <SwipeItem Text="Edit"
+                                       BackgroundColor="LightGreen"
+                                       Command="{Binding Source={RelativeSource AncestorType=CollectionView}, Path=BindingContex.GoToEditPage}"
+                                       CommandParameter="{Binding .}"/>
+                            <SwipeItem Text="Delete"
+                                       BackgroundColor="LightPink" />
+                        </SwipeItems>
+                    </SwipeView.RightItems>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                               Text="{Binding Code}"
+                               FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="{Binding Name}"
+                               FontAttributes="Italic"
+                               VerticalOptions="End" />
+                    </Grid>
+                </SwipeView>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>
