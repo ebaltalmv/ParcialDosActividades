@@ -11,27 +11,100 @@
                HorizontalOptions="Center"
                Margin="15"
                Rotation="{Binding Value, Source={x:Reference RotationSlider}}" />
-        <Slider x:Name="RotationSlider"
-                Minimum="0"
-                Maximum="360"
-                VerticalOptions="Center" />
-        <Slider Minimum="0"
-                Maximum="360"
-                VerticalOptions="Center"
-                BindingContext="{x:Reference Label}"
-                Value="{Binding RotationY, Mode=OneWayToSource}" />
-        <Slider Minimum="0"
-                Maximum="360"
-                VerticalOptions="Center"
-                BindingContext="{x:Reference Label}"
-                Value="{Binding RotationX, Mode=OneWayToSource}" />
-        <Slider Minimum="1"
-                Maximum="18"
-                VerticalOptions="Center"
-                BindingContext="{x:Reference Label}"
-                Value="{Binding Scale, Mode=OneWayToSource}" />
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Text="Rotación: "
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   HorizontalOptions="End" />
+            <Slider x:Name="RotationSlider"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Minimum="0"
+                    Maximum="360"
+                    VerticalOptions="Center" />
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Text="Rotación en Y: "
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   HorizontalOptions="End" />
+            <Slider x:Name="RotationYSlider"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Minimum="0"
+                    Maximum="360"
+                    VerticalOptions="Center"
+                    BindingContext="{x:Reference Label}"
+                    Value="{Binding RotationY, Mode=OneWayToSource}" />
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Rotación en X: "
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   HorizontalOptions="End" />
+            <Slider x:Name="RotationXSlider"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Minimum="0"
+                    Maximum="360"
+                    VerticalOptions="Center"
+                    BindingContext="{x:Reference Label}"
+                    Value="{Binding RotationX, Mode=OneWayToSource}" />
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Text="Escala: "
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   HorizontalOptions="End" />
+            <Slider x:Name="ScaleSlider"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Minimum="1"
+                    Maximum="18"
+                    VerticalOptions="Center"
+                    BindingContext="{x:Reference Label}"
+                    Value="{Binding Scale, Mode=OneWayToSource}" />
+        </Grid>
+
         <Label BindingContext="{x:Reference RotationSlider}"
-               Text="{Binding Value, StringFormat='El Ángulo es de: {0:F0}°'}"
+               Text="{Binding Value, StringFormat='El Ángulo de rotación es de: {0:F0}°'}"
+               FontAttributes="Bold"
+               FontSize="18"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <Label BindingContext="{x:Reference RotationYSlider}"
+               Text="{Binding Value, StringFormat='El Ángulo de rotación en Y es de: {0:F0}°'}"
+               FontAttributes="Bold"
+               FontSize="18"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <Label BindingContext="{x:Reference RotationXSlider}"
+               Text="{Binding Value, StringFormat='El Ángulo de rotación en X es de: {0:F0}°'}"
+               FontAttributes="Bold"
+               FontSize="18"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <Label BindingContext="{x:Reference ScaleSlider}"
+               Text="{Binding Value, StringFormat='La escala es de: {0:F2}'}"
                FontAttributes="Bold"
                FontSize="18"
                VerticalOptions="Center"
