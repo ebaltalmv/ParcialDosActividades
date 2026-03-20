@@ -2,11 +2,98 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DataBindingExample.Views.AddAirlinePage"
+             xmlns:vm="clr-namespace:DataBindingExample.ViewModels"
+             x:DataType="vm:AirlineViewModel"
              Title="AddAirlinePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="15"
+                             Spacing="15">
+            <Entry Placeholder="Airline Code"
+                   Text="{Binding Code}"
+                   TextColor="Black">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry"
+                                 Binding="{Binding IsCodeValid}"
+                                 Value="False">
+                        <Setter Property="BackgroundColor"
+                                Value="LightPink" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Entry"
+                                 Binding="{Binding IsCodeValid}"
+                                 Value="True">
+                        <Setter Property="BackgroundColor"
+                                Value="White" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label Text="Campo obligatorio. Debe de contener al menos dos caracteres"
+                   TextColor="Red"
+                   FontSize="12"
+                   IsVisible="False"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding IsCodeValid}"
+                                 Value="False">
+                        <Setter Property="IsVisible"
+                                Value="True" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+            <Entry Placeholder="Airline Name"
+                   Text="{Binding Name}"
+                   TextColor="Black">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry"
+                                 Binding="{Binding IsNameValid}"
+                                 Value="False">
+                        <Setter Property="BackgroundColor"
+                                Value="LightPink" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Entry"
+                                 Binding="{Binding IsNameValid}"
+                                 Value="True">
+                        <Setter Property="BackgroundColor"
+                                Value="White" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label Text="El nombre de la aerolinea es requerido"
+                   TextColor="Red"
+                   FontSize="12"
+                   IsVisible="False"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding IsNameValid}"
+                                 Value="False">
+                        <Setter Property="IsVisible"
+                                Value="True" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+            <Entry Placeholder="Airline Country"
+                   Text="{Binding Country}" />
+
+            <Entry Placeholder="Airline Phone"
+                   Keyboard="Telephone"
+                   Text="{Binding Phone}" />
+
+            <HorizontalStackLayout Spacing="15"
+                                   HorizontalOptions="Center">
+                <Button Text="Save"
+                        BackgroundColor="LightGreen"
+                        TextColor="White"
+                        IsEnabled="{Binding IsFormValid}" />
+                <Button Text="Cancel"
+                        BackgroundColor="Red"
+                        TextColor="White" />
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
