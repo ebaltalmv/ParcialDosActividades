@@ -21,11 +21,13 @@
                     <SwipeView.RightItems>
                         <SwipeItems>
                             <SwipeItem Text="Edit"
-                                       BackgroundColor="LightGreen"
+                                       BackgroundColor="Green"
                                        Command="{Binding Source={RelativeSource AncestorType=CollectionView}, Path=BindingContext.GoToEditPageCommand}"
                                        CommandParameter="{Binding .}"/>
                             <SwipeItem Text="Delete"
-                                       BackgroundColor="LightPink" />
+                                       BackgroundColor="LightPink"
+                                       Command="{Binding Source={RelativeSource AncestorType=CollectionView}, Path=BindingContext.DeleteAirlineCommand}"
+                                       CommandParameter="{Binding .}" />
                         </SwipeItems>
                     </SwipeView.RightItems>
                     <Grid Padding="10">

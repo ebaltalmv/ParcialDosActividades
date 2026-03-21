@@ -55,12 +55,20 @@ namespace DataBindingExample.ViewModels
         [RelayCommand]
         public async Task SaveAirline()
         {
-            var isEditMode = AirlineModel.Airlines.SingleOrDefault(a => a.Code == this.Code);
-            if (isEditMode != null)
+            var foundAirline = AirlineModel.Airlines.SingleOrDefault(a => a.Code == this.Code);
+            if (foundAirline != null)
             {
-                await Shell.Current.DisplayAlertAsync("Edit Mode", "This is edition mode", "OK");
+                EditAirline(foundAirline);
+                await Shell.Current.DisplayAlertAsync("Exito en la edición", "El registro se ha editado exitosamente", "OK");
+                await Shell.Current.GoToAsync("..");
                 return;
             }
+            CreateAirline();
+            await Shell.Current.GoToAsync("..");
+        }
+
+        private void CreateAirline()
+        {
             AirlineModel airline = new()
             {
                 Code = this.Code,
@@ -70,7 +78,13 @@ namespace DataBindingExample.ViewModels
             };
 
             AirlineModel.Airlines.Add(airline);
-            await Shell.Current.GoToAsync("..");
+        }
+
+        private void EditAirline(AirlineModel foundAirline)
+        {
+            foundAirline.Name = this.Name;
+            foundAirline.Country = this.Country;
+            foundAirline.Phone = this.Phone;
         }
 
         public void LoadAirlineForEdition(AirlineModel airline)
