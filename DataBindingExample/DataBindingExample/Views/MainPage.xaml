@@ -22,7 +22,7 @@
                         <SwipeItems>
                             <SwipeItem Text="Edit"
                                        BackgroundColor="LightGreen"
-                                       Command="{Binding Source={RelativeSource AncestorType=CollectionView}, Path=BindingContex.GoToEditPage}"
+                                       Command="{Binding Source={RelativeSource AncestorType=CollectionView}, Path=BindingContext.GoToEditPageCommand}"
                                        CommandParameter="{Binding .}"/>
                             <SwipeItem Text="Delete"
                                        BackgroundColor="LightPink" />
