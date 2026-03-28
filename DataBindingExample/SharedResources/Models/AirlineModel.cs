@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace DataBindingExample.Models
+namespace SharedResources.Models
 {
     public class AirlineModel
     {

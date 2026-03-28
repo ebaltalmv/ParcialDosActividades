@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="DataBindingExample/DataBindingExample.csproj" />
+  <Project Path="SharedResources/SharedResources.csproj" Id="c15dca22-f188-4e22-a037-11e22cc268fa" />
 </Solution>
