@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using SharedResources.Data;
 
 namespace DataBindingExample
 {
@@ -15,11 +17,23 @@ namespace DataBindingExample
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "app.db");
+
+            builder.Services.AddDbContext<DataContext>(options => options.UseSqlite($"Filename={dbPath}"));
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var dataBase = scope.ServiceProvider.GetRequiredService<DataContext>();
+                dataBase.Database.Migrate();
+            }
+
+            return app;
         }
     }
 }

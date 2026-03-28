@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using DataBindingExample.Models;
 using DataBindingExample.Views;
+using SharedResources.Models;
 using System.Collections.ObjectModel;
 
 namespace DataBindingExample.ViewModels

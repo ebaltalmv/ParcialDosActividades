@@ -78,6 +78,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\SharedResources\SharedResources.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\AddAirlinePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

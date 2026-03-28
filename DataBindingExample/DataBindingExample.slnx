@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="DataBindingExample/DataBindingExample.csproj" />
+  <Project Path="MigrationApp/MigrationApp.csproj" Id="0b1298c7-5c96-4b63-8462-e67e34f38c03" />
   <Project Path="SharedResources/SharedResources.csproj" Id="c15dca22-f188-4e22-a037-11e22cc268fa" />
 </Solution>

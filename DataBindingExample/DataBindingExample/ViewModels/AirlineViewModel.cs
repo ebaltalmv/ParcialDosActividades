@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using DataBindingExample.Models;
+using SharedResources.Models;
 using System.Text.RegularExpressions;
 
 namespace DataBindingExample.ViewModels

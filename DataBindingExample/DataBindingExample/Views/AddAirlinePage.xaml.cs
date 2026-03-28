@@ -1,5 +1,5 @@
-using DataBindingExample.Models;
 using DataBindingExample.ViewModels;
+using SharedResources.Models;
 
 namespace DataBindingExample.Views;
 
